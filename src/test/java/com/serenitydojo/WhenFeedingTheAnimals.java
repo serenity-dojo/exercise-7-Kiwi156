@@ -1,8 +1,19 @@
 package com.serenitydojo;
 
+import com.serenitydojo.model.AnimalType;
 import com.serenitydojo.model.Feeder;
+import com.serenitydojo.model.FoodType;
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import static com.serenitydojo.model.AnimalType.*;
+import static com.serenitydojo.model.FoodType.*;
+import static com.serenitydojo.model.FoodType.TUNA;
 
 public class WhenFeedingTheAnimals {
 
@@ -10,36 +21,74 @@ public class WhenFeedingTheAnimals {
     public void shouldFeedCatsTuna() {
         Feeder feeder = new Feeder();
 
-        String food = feeder.feeds("Cat", false);
+        Enum food = feeder.feeds(CAT, false);
 
-        Assert.assertEquals("Tuna", food);
+        Assert.assertEquals(TUNA, food);
     }
 
     @Test
     public void shouldFeedHamstersCabbage() {
         Feeder feeder = new Feeder();
 
-        String food = feeder.feeds("Hamster", false);
+        Enum food = feeder.feeds(HAMSTER, false);
 
-        Assert.assertEquals("Cabbage", food);
+        Assert.assertEquals(CABBAGE, food);
     }
 
     @Test
     public void shouldFeedDogsDogFood() {
         Feeder feeder = new Feeder();
 
-        String food = feeder.feeds("Dog", false);
+        Enum food = feeder.feeds(DOG, false);
 
-        Assert.assertEquals("Dog Food", food);
+        Assert.assertEquals(DOG_FOOD, food);
     }
 
     @Test
     public void shouldFeedPremiumCatsPremiumFood() {
         Feeder feeder = new Feeder();
 
-        String food = feeder.feeds("Cat", true);
+        Enum food = feeder.feeds(CAT, true);
 
-        Assert.assertEquals("Salmon", food);
+        Assert.assertEquals(SALMON, food);
+    }
 
+    @Test
+    public void shouldFeedPremiumDogsPremiumFood() {
+        Feeder feeder = new Feeder();
+
+        Enum food = feeder.feeds(DOG, true);
+
+        Assert.assertEquals(STEAK, food);
+
+    }
+
+    @Test
+    public void shouldFeedPremiumHamstersLettuce() {
+        Feeder feeder = new Feeder();
+
+        Enum food = feeder.feeds(HAMSTER, true);
+
+        Assert.assertEquals(LETTUCE, food);
+
+    }
+
+    @Test
+
+    public void ListOfColors() {
+
+
+        Set<String> myColors = new HashSet<>();
+        myColors.add("red");
+        myColors.add("blue");
+        myColors.add("purple");
+        myColors.add("red");
+
+
+        for (String someColor : myColors) {
+            System.out.println("Color: " + someColor);
+
+
+        }
     }
 }
